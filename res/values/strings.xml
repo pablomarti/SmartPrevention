@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">SmartPrevention</string>
-    <string name="action_settings">Settings</string>
+    
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="user">Usuario</string>
@@ -13,5 +13,11 @@
     <string name="register_login_in"></string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_alert">AlertActivity</string>
-
+    <!--Menu option  -->
+	<string	name="alert_menu">Alertas</string>
+	<string name="action_settings">Configuraciones</string>
+	<string name="location_menu">Ubicaciones</string>
+	<string name="prevention_menu">Prevenciones</string>
+	<string name="about_us">About Me</string>
+	<!--  -->
 </resources>

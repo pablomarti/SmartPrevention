@@ -2,7 +2,9 @@ package com.example.smartprevention;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -63,5 +65,22 @@ public class AlertActivity extends Activity {
 		getMenuInflater().inflate(R.menu.alert, menu);
 		return true;
 	}
-
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.location_menu:
+	            //showHelp();
+	        	Intent inten_2t = new Intent(AlertActivity.this, MainActivity.class);
+				startActivityForResult(inten_2t, 0);
+	            return true;
+	        case R.id.prevention_menu:
+	            //showHelp();
+	            return true;
+	        case R.id.action_settings:
+	            //showHelp();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 }
