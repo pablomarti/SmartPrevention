@@ -20,5 +20,6 @@
     <string name="about_us">About Me</string>
     <!--  -->
     <string name="title_activity_prevention">PreventionActivity</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
 
 </resources>
