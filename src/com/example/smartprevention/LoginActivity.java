@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 	private Button btnSign_up;
@@ -14,6 +15,7 @@ public class LoginActivity extends Activity {
 	
 	private EditText user_login;
 	private EditText user_password;
+	private Login loginManager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +34,31 @@ public class LoginActivity extends Activity {
 				new View.OnClickListener(){
 					@Override
 					public void onClick(View v) {
-						// TODO Auto-generated method stub
 						Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 						startActivityForResult(intent,0);
 					}
 		});// end btnSign_up.setOnClickListener
+		
 		btnLogin_in.setOnClickListener(
 			new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					//Codigo para logear
+					loginManager = new Login();
+					loginManager.setCustomEventListener(new OnCustomEventListener(){
+						public void onEvent(){
+							if(loginManager.getEvent() == "login"){
+								if(loginManager.userLoged){
+									Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+									startActivityForResult(intent,0);
+								}
+								else{
+									Toast.makeText(getBaseContext(), "Usuario o password invalido", Toast.LENGTH_SHORT).show();
+								}
+							}
+						}
+					});
 					
+					loginManager.login(user_login.getText().toString(), user_password.getText().toString());
 				}
 		});//end btnLogin_in.setOnClickListener
 	}
