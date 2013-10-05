@@ -7,11 +7,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
 	
 	private Button login_register;
 	private Button sign_in_register;
+	private Login loginManager;
 	
 	private EditText user_sign_in, email_sign_in,password_sign_in;
 	
@@ -33,7 +35,6 @@ public class RegisterActivity extends Activity {
 			new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
 				startActivityForResult(intent, 0);
 			}
@@ -42,7 +43,22 @@ public class RegisterActivity extends Activity {
 			new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				loginManager = new Login();
+				loginManager.setCustomEventListener(new OnCustomEventListener(){
+					public void onEvent(){
+						if(loginManager.getEvent() == "signUp"){
+							if(loginManager.userLoged){
+								Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+								startActivityForResult(intent,0);
+							}
+							else{
+								Toast.makeText(getBaseContext(), "Hubo un error al momento de crear su cuenta, por favor revise sus datos personales", Toast.LENGTH_SHORT).show();
+							}
+						}
+					}
+				});
+				
+				loginManager.signUp(user_sign_in.getText().toString(), email_sign_in.getText().toString(), password_sign_in.getText().toString());
 				
 			}
 		});//end sign_in_register.setOnClickListener
