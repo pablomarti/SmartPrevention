@@ -4,6 +4,7 @@ import com.parse.Parse;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
 
+import android.R.menu;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -12,6 +13,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
@@ -59,24 +61,21 @@ public class MainActivity extends Activity {
 	    PushService.setDefaultPushCallback(this, MainActivity.class);
 	    ParseInstallation.getCurrentInstallation().saveInBackground();
 	}
-
+	private static final int MNU_OPC1 = 1;
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
+		//menu.add(Menu.NONE, MNU_OPC1, Menu.NONE, "Opcion1");
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
-	        case R.id.alert_menu:
-	            //newGame();
-	        	Intent intent = new Intent(MainActivity.this, AlertActivity.class);
-				startActivityForResult(intent, 0);
-	            return true;
 	        case R.id.prevention_menu:
 	            //showHelp();
+	        	Intent intent_2 = new Intent(MainActivity.this, PreventionActivity.class);
+				startActivityForResult(intent_2, 0);
 	            return true;
 	        case R.id.about_us:
 	            //showHelp();
