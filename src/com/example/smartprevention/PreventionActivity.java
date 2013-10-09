@@ -23,14 +23,18 @@ public class PreventionActivity extends Activity {
 	}
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
-	    switch (item.getItemId()) {
-	        case R.id.location_menu:
+		Intent prevention_intent = null;
+		
+	    switch (item.getItemId()){
+	        case R.id.alert_menu:
 	            //newGame();
-	        	Intent intent = new Intent(PreventionActivity.this, MainActivity.class);
-				startActivityForResult(intent, 0);
+	        	prevention_intent = new Intent(PreventionActivity.this, AlertActivity.class);
+				startActivityForResult(prevention_intent, 0);
 	            return true;
-	        case R.id.prevention_menu:
+	        case R.id.location_menu:
 	            //showHelp();
+	        	prevention_intent = new Intent(PreventionActivity.this, MainActivity.class);
+	        	startActivityForResult(prevention_intent, 0);
 	            return true;
 	        case R.id.about_us:
 	            //showHelp();

@@ -43,22 +43,22 @@ public class LoginActivity extends Activity {
 			new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					loginManager = new Login();
-					loginManager.setCustomEventListener(new OnCustomEventListener(){
-						public void onEvent(){
-							if(loginManager.getEvent() == "login"){
-								if(loginManager.userLoged){
-									Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+					//loginManager = new Login();
+					//loginManager.setCustomEventListener(new OnCustomEventListener(){
+						//public void onEvent(){
+							//if(loginManager.getEvent() == "login"){
+								//if(loginManager.userLoged){
+									Intent intent = new Intent(LoginActivity.this, PreventionActivity.class);
 									startActivityForResult(intent,0);
-								}
-								else{
-									Toast.makeText(getBaseContext(), "Usuario o password invalido", Toast.LENGTH_SHORT).show();
-								}
-							}
-						}
-					});
+								//}
+								//else{
+								//	Toast.makeText(getBaseContext(), "Usuario o password invalido", Toast.LENGTH_SHORT).show();
+								//}
+							//}
+						//}
+					//});
 					
-					loginManager.login(user_login.getText().toString(), user_password.getText().toString());
+					//loginManager.login(user_login.getText().toString(), user_password.getText().toString());
 				}
 		});//end btnLogin_in.setOnClickListener
 	}

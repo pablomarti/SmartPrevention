@@ -60,6 +60,8 @@ public class MainActivity extends Activity {
 	    Parse.initialize(this, "E7c9LwTnI8NgF3QXtS8WdpQgqzpHYcKJCfcTacXy", "D1V5tfIKQHOuP54JfGnmiRxcb5Dn5rulIdsV5Acs"); 
 	    PushService.setDefaultPushCallback(this, MainActivity.class);
 	    ParseInstallation.getCurrentInstallation().saveInBackground();
+	    
+	    setTitle("Zonas");
 	}
 	private static final int MNU_OPC1 = 1;
 	@Override
@@ -71,11 +73,16 @@ public class MainActivity extends Activity {
 	}
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
+		Intent intent_manage = null;
 	    switch (item.getItemId()) {
+	    	case R.id.alert_menu:
+	    		intent_manage = new Intent(MainActivity.this, AlertActivity.class);
+	    		startActivityForResult(intent_manage,0);
+	    	return true;
 	        case R.id.prevention_menu:
 	            //showHelp();
-	        	Intent intent_2 = new Intent(MainActivity.this, PreventionActivity.class);
-				startActivityForResult(intent_2, 0);
+	        	intent_manage = new Intent(MainActivity.this, PreventionActivity.class);
+				startActivityForResult(intent_manage, 0);
 	            return true;
 	        case R.id.about_us:
 	            //showHelp();
@@ -103,18 +110,18 @@ public class MainActivity extends Activity {
 		@Override
 		public void onLocationChanged(Location loc) {
 			if (loc != null) { 
-				Toast.makeText(getBaseContext(), "Location changed : Lat: " + loc.getLatitude() + " Lng: " + loc.getLongitude(), Toast.LENGTH_SHORT).show();
+				//Toast.makeText(getBaseContext(), "Location changed : Lat: " + loc.getLatitude() + " Lng: " + loc.getLongitude(), Toast.LENGTH_SHORT).show();
 			} 
 		}
 		
 		@Override
 		public void onProviderDisabled(String provider) {
-			Toast.makeText(getBaseContext(), "Provider: " + provider + " disabled", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getBaseContext(), "Provider: " + provider + " disabled", Toast.LENGTH_SHORT).show();
 		}
 		
 		@Override
 		public void onProviderEnabled(String provider) {
-			Toast.makeText(getBaseContext(), "Provider: " + provider + " enabled", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getBaseContext(), "Provider: " + provider + " enabled", Toast.LENGTH_SHORT).show();
 		}
 		
 		@Override
@@ -130,7 +137,7 @@ public class MainActivity extends Activity {
 																		statusString = "temporarily unavailable";
 			}
 			
-			Toast.makeText(getBaseContext(), provider + " " + statusString, Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getBaseContext(), provider + " " + statusString, Toast.LENGTH_SHORT).show();
 		}
 	}
 
